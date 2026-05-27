@@ -1,0 +1,13 @@
+node_modules/
+.aws-sam/
+__pycache__/
+*.pyc
+.env
+.env.local
+frontend/dist/
+.vscode/
+.idea/
+*.swp
+.DS_Store
+samconfig.toml
+.venv/
