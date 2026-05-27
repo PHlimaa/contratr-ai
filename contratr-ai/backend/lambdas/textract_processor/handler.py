@@ -80,7 +80,7 @@ def _extract_text(bucket, key):
 def _extract_multipage(bucket, key):
     r = textract_client.start_document_text_detection(DocumentLocation={"S3Object": {"Bucket": bucket, "Name": key}})
     job_id = r["JobId"]
-    for _ in range(30):
+    for _ in range(60):
         time.sleep(2)
         result = textract_client.get_document_text_detection(JobId=job_id)
         if result["JobStatus"] == "SUCCEEDED":

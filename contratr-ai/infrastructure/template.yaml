@@ -341,7 +341,7 @@ Resources:
       Handler: handler.lambda_handler
       CodeUri: ../backend/lambdas/textract_processor/
       Description: Extrai texto via Textract
-      Timeout: 120
+      Timeout: 300
       MemorySize: 512
       DeadLetterQueue:
         Type: SQS
@@ -417,7 +417,7 @@ Resources:
         - Statement:
             - Effect: Allow
               Action: bedrock:InvokeModel
-              Resource: !Sub 'arn:aws:bedrock:${AWS::Region}::foundation-model/${BedrockModelId}'
+              Resource: !Sub '*'
         - SQSSendMessagePolicy:
             QueueName: !GetAtt DeadLetterQueue.QueueName
 
@@ -470,7 +470,7 @@ Resources:
       Handler: handler.lambda_handler
       CodeUri: ../backend/lambdas/policies_bulk/
       Description: Import bulk de politicas via IA
-      Timeout: 120
+      Timeout: 300
       Layers:
         - !Ref CommonLayer
       Policies:
